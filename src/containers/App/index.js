@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <ThemeProvider>
         <div>
-          <AppBar title='Title' showMenuIconButton />
+          <AppBar title='PAAR' showMenuIconButton />
           {routes()}
         </div>
       </ThemeProvider>

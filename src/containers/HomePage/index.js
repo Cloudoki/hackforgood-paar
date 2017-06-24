@@ -1,9 +1,10 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const HomePage = () => (
+const HomePage = (props, { intl: { messages } }) => (
   <div style={styles.container}>
-    <h1>#PAAR</h1>
+    <h1>{messages['test.working']}</h1>
   </div>
 )
 
@@ -14,6 +15,10 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center'
   }
+}
+
+HomePage.contextTypes = {
+  intl: PropTypes.object.isRequired
 }
 
 export default HomePage
