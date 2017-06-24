@@ -8,6 +8,8 @@ import { AppBar, Drawer, MenuItem } from 'material-ui'
 
 import routes from './routes'
 
+const createOnClick = (fn, value) => event => fn(value)
+
 class App extends Component {
   state = {
     drawerOpen: false
@@ -28,6 +30,12 @@ class App extends Component {
     this.setState({ drawerOpen: !this.state.drawerOpen })
   }
 
+  _navigate = (path) => {
+    const { history } = this.props
+    this._toggleDrawer()
+    history.push(path)
+  }
+
   render () {
     const { drawerOpen } = this.state
     const { intl } = this.context
@@ -45,7 +53,8 @@ class App extends Component {
             open={drawerOpen}
             onRequestChange={this._handleRequestChange}
           >
-            <MenuItem onTouchTap={this._toggleDrawer}>{messages['app.drawer.profile']}</MenuItem>
+            <MenuItem onTouchTap={createOnClick(this._navigate, '/')}>{messages['app.drawer.home']}</MenuItem>
+            <MenuItem onTouchTap={createOnClick(this._navigate, 'addprofile')}>{messages['app.drawer.profile']}</MenuItem>
           </Drawer>
           {routes()}
         </div>
@@ -56,7 +65,8 @@ class App extends Component {
 
 App.propTypes = {
   auth: PropTypes.object.isRequired,
-  userAuthLogin: PropTypes.func.isRequired
+  userAuthLogin: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 App.contextTypes = {
