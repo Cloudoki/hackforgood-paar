@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { authLogin } from 'containers/Auth/actions'
+import ThemeProvider from 'components/ThemeProvider'
+import { AppBar } from 'material-ui'
 
 import routes from './routes'
 
@@ -16,9 +18,12 @@ class App extends Component {
 
   render () {
     return (
-      <div style={styles.container}>
-        {routes()}
-      </div>
+      <ThemeProvider>
+        <div>
+          <AppBar title='Title' showMenuIconButton />
+          {routes()}
+        </div>
+      </ThemeProvider>
     )
   }
 }
@@ -26,13 +31,6 @@ class App extends Component {
 App.propTypes = {
   auth: PropTypes.object.isRequired,
   userAuthLogin: PropTypes.func.isRequired
-}
-
-const styles = {
-  container: {
-    display: 'flex',
-    minHeight: '100%'
-  }
 }
 
 const mapStateToProps = ({ auth }) => ({ auth })
