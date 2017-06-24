@@ -3,7 +3,7 @@ import React from 'react'
 
 const HomePage = () => (
   <div style={styles.container}>
-    <h1>#hackForGood</h1>
+    <h1>#PAAR</h1>
   </div>
 )
 
