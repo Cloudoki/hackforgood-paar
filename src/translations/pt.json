@@ -3,5 +3,10 @@
     "id": "test.working",
     "defaultMessage": "it's working",
     "message": "está a funcionar"
+  },
+  {
+    "id": "app.drawer.profile",
+    "defaultMessage": "Add Profile",
+    "message": "Adicionar Perfil"
   }
 ]

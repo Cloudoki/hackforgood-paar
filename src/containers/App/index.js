@@ -4,11 +4,15 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { authLogin } from 'containers/Auth/actions'
 import ThemeProvider from 'components/ThemeProvider'
-import { AppBar } from 'material-ui'
+import { AppBar, Drawer, MenuItem } from 'material-ui'
 
 import routes from './routes'
 
 class App extends Component {
+  state = {
+    drawerOpen: false
+  }
+
   componentWillMount () {
     const { auth } = this.props
     if (auth.token != null) {
@@ -16,11 +20,33 @@ class App extends Component {
     }
   }
 
+  _handleRequestChange = (open) => {
+    this.setState({ drawerOpen: !!open })
+  }
+
+  _toggleDrawer = () => {
+    this.setState({ drawerOpen: !this.state.drawerOpen })
+  }
+
   render () {
+    const { drawerOpen } = this.state
+    const { intl } = this.context
+    const messages = intl.messages
     return (
       <ThemeProvider>
         <div>
-          <AppBar title='PAAR' showMenuIconButton />
+          <AppBar
+            title='PAAR'
+            onLeftIconButtonTouchTap={this._toggleDrawer}
+          />
+          <Drawer
+            docked={false}
+            width={250}
+            open={drawerOpen}
+            onRequestChange={this._handleRequestChange}
+          >
+            <MenuItem onTouchTap={this._toggleDrawer}>{messages['app.drawer.profile']}</MenuItem>
+          </Drawer>
           {routes()}
         </div>
       </ThemeProvider>
@@ -31,6 +57,10 @@ class App extends Component {
 App.propTypes = {
   auth: PropTypes.object.isRequired,
   userAuthLogin: PropTypes.func.isRequired
+}
+
+App.contextTypes = {
+  intl: PropTypes.object.isRequired
 }
 
 const mapStateToProps = ({ auth }) => ({ auth })
