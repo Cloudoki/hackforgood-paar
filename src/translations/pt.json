@@ -3,5 +3,35 @@
     "id": "test.working",
     "defaultMessage": "it's working",
     "message": "está a funcionar"
+  },
+  {
+    "id": "chat.title",
+    "defaultMessage": "Chat",
+    "message": "Chat"
+  },
+  {
+    "id": "chat.userlist",
+    "defaultMessage": "Users Connected",
+    "message": "Utilizadores Ligados"
+  },
+  {
+    "id": "chat.user",
+    "defaultMessage": "Me",
+    "message": "Eu"
+  },
+  {
+    "id": "chat.messages",
+    "defaultMessage": "Messages:",
+    "message": "Mensagens:"
+  },
+  {
+    "id": "chat.message",
+    "defaultMessage": "Type message here",
+    "message": "Escreve a mensagem aqui"
+  },
+  {
+    "id": "chat.send",
+    "defaultMessage": "Send",
+    "message": "Enviar"
   }
 ]
