@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import io from 'socket.io-client'
-import {List, Subheader, ListItem, TextField, RaisedButton} from 'material-ui'
+import {List, Subheader, ListItem, Divider, TextField, RaisedButton} from 'material-ui'
 import {darkBlack} from 'material-ui/styles/colors'
 let socket
 
@@ -25,6 +25,10 @@ class ChatPage extends Component {
 
   componentWillUnmount () {
     socket.emit('leave', {})
+    socket.removeAllListeners('joined')
+    socket.removeAllListeners('left')
+    socket.removeAllListeners('newMessage')
+    socket.removeAllListeners('users')
   }
 
   addUserList (payload) {
@@ -83,15 +87,18 @@ class ChatPage extends Component {
           <List style={styles.col}>
             <Subheader>{messageStrings['chat.messages']}</Subheader>
             {this.state.messages.map((data, idx) =>
-              <ListItem
-                key={`msg-${idx}`}
-                secondaryText={
-                  <p>
-                    <span style={{color: darkBlack}}>{data.username || messageStrings['chat.user']}:</span> {data.message}
-                  </p>
-                }
-                disabled
-              />
+              <div>
+                <ListItem
+                  key={`msg-${idx}`}
+                  secondaryText={
+                    <p>
+                      <span style={{color: darkBlack}}>{data.username || messageStrings['chat.user']}:</span> {data.message}
+                    </p>
+                  }
+                  disabled
+                />
+                <Divider />
+              </div>
             )}
           </List>
         </div>

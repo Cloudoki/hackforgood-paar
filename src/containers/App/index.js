@@ -76,6 +76,7 @@ class App extends Component {
             }
             {/*<MenuItem onTouchTap={createOnClick(this._navigate, '/filter')}>{messages['app.drawer.filter']}</MenuItem>*/}
             <MenuItem onTouchTap={createOnClick(this._navigate, '/info')}>{messages['app.drawer.info']}</MenuItem>
+            <MenuItem onTouchTap={createOnClick(this._navigate, '/login')}>Logout</MenuItem>
           </Drawer>
           {routes()}
         </div>
