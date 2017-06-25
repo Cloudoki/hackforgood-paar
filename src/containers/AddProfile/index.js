@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Paper, TextField, DatePicker, RaisedButton, MenuItem, SelectField, Chip } from 'material-ui'
-import { lightGreen500, white } from 'material-ui/styles/colors'
+import { lightGreen500, pink500, white } from 'material-ui/styles/colors'
 
 const countries = [
   'Iraque',
@@ -17,7 +17,8 @@ class AddProfile extends Component {
     skills: [],
     languages: [],
     skillsValue: '',
-    languageValue: ''
+    languageValue: '',
+    selectedCountry: ''
   }
 
   _addSkill = (event) => {
@@ -60,10 +61,14 @@ class AddProfile extends Component {
     this.setState({ languages: languages.filter((item, idx) => idx !== index) })
   }
 
+  _handleCountryChange = (e, k, value) => {
+    this.setState({ selectedCountry: value })
+  }
+
   render () {
     const { intl } = this.context
     const messages = intl.messages
-    const { skills, languages, skillsValue, languageValue } = this.state
+    const { skills, languages, skillsValue, languageValue, selectedCountry } = this.state
     return (
       <div style={styles.container}>
         <Paper
@@ -81,6 +86,8 @@ class AddProfile extends Component {
             />
             <SelectField
               floatingLabelText={messages['addProfile.textfield.country']}
+              onChange={this._handleCountryChange}
+              value={selectedCountry}
             >
               {
                 countries.map((country, idx) =>
@@ -158,16 +165,27 @@ const styles = {
     padding: 20
   },
   title: {
-    margin: 0
+    position: 'absolute',
+    width: '100%',
+    top: 0,
+    left: 0,
+    padding: 24,
+    margin: 0,
+    color: white,
+    backgroundColor: pink500,
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4
   },
   row: {
     display: 'flex',
     justifyContent: 'space-between'
   },
   paper: {
+    position: 'relative',
     width: 700,
     margin: '0 auto',
-    padding: '24px 32px'
+    padding: '24px 32px',
+    paddingTop: 67
   },
   actions: {
     paddingTop: 16,
