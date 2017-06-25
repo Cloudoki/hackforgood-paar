@@ -1,0 +1,67 @@
+[
+  {
+    "id": "test.working",
+    "defaultMessage": "it's working",
+    "message": ""
+  },
+  {
+    "id": "app.drawer.home",
+    "defaultMessage": "home",
+    "message": ""
+  },
+  {
+    "id": "app.drawer.profile",
+    "defaultMessage": "Add Profile",
+    "message": ""
+  },
+  {
+    "id": "addProfile.paper.title",
+    "defaultMessage": "Add Profile",
+    "message": ""
+  },
+  {
+    "id": "addProfile.textfield.name",
+    "defaultMessage": "Name",
+    "message": ""
+  },
+  {
+    "id": "addProfile.textfield.birthday",
+    "defaultMessage": "Birthday",
+    "message": ""
+  },
+  {
+    "id": "addProfile.textfield.country",
+    "defaultMessage": "Country",
+    "message": ""
+  },
+  {
+    "id": "addProfile.textfield.experience.name",
+    "defaultMessage": "Profissional Experience",
+    "message": ""
+  },
+  {
+    "id": "addProfile.textfield.experience.date",
+    "defaultMessage": "Date",
+    "message": ""
+  },
+  {
+    "id": "addProfile.textfield.experience.title",
+    "defaultMessage": "Title",
+    "message": ""
+  },
+  {
+    "id": "addProfile.textfield.experience.description",
+    "defaultMessage": "Description",
+    "message": ""
+  },
+  {
+    "id": "addProfile.textfield.skills",
+    "defaultMessage": "Skills",
+    "message": ""
+  },
+  {
+    "id": "addProfile.textfield.languages",
+    "defaultMessage": "Languages",
+    "message": ""
+  }
+]
