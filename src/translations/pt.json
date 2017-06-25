@@ -10,9 +10,19 @@
     "message": "Inicio"
   },
   {
-    "id": "app.drawer.profile",
+    "id": "app.drawer.addprofile",
     "defaultMessage": "Add Profile",
     "message": "Adicionar Perfil"
+  },
+  {
+    "id": "app.drawer.profile",
+    "defaultMessage": "Profile",
+    "message": ""
+  },
+  {
+    "id": "app.drawer.chat",
+    "defaultMessage": "Chat",
+    "message": ""
   },
   {
     "id": "addProfile.paper.title",
@@ -63,5 +73,45 @@
     "id": "addProfile.textfield.languages",
     "defaultMessage": "Languages",
     "message": "Linguas"
+  },
+  {
+    "id": "profile.assign",
+    "defaultMessage": "Assing mentor",
+    "message": "Atribuir mentor"
+  },
+  {
+    "id": "profile.make",
+    "defaultMessage": "Make mentor",
+    "message": "Tornar mentor"
+  },
+  {
+    "id": "chat.title",
+    "defaultMessage": "Chat",
+    "message": "Chat"
+  },
+  {
+    "id": "chat.userlist",
+    "defaultMessage": "Users Connected",
+    "message": "Utilizadores Ligados"
+  },
+  {
+    "id": "chat.user",
+    "defaultMessage": "Me",
+    "message": "Eu"
+  },
+  {
+    "id": "chat.messages",
+    "defaultMessage": "Messages:",
+    "message": "Mensagens:"
+  },
+  {
+    "id": "chat.message",
+    "defaultMessage": "Type message here",
+    "message": "Escreve a mensagem aqui"
+  },
+  {
+    "id": "chat.send",
+    "defaultMessage": "Send",
+    "message": "Enviar"
   }
 ]

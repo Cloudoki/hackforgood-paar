@@ -46,6 +46,7 @@ class App extends Component {
           <AppBar
             title='PAAR'
             onLeftIconButtonTouchTap={this._toggleDrawer}
+            style={styles.appBar}
           />
           <Drawer
             docked={false}
@@ -54,12 +55,20 @@ class App extends Component {
             onRequestChange={this._handleRequestChange}
           >
             <MenuItem onTouchTap={createOnClick(this._navigate, '/')}>{messages['app.drawer.home']}</MenuItem>
-            <MenuItem onTouchTap={createOnClick(this._navigate, 'addprofile')}>{messages['app.drawer.profile']}</MenuItem>
+            <MenuItem onTouchTap={createOnClick(this._navigate, '/addprofile')}>{messages['app.drawer.addprofile']}</MenuItem>
+            <MenuItem onTouchTap={createOnClick(this._navigate, '/profile')}>{messages['app.drawer.profile']}</MenuItem>
+            <MenuItem onTouchTap={createOnClick(this._navigate, '/chat')}>{messages['app.drawer.chat']}</MenuItem>
           </Drawer>
           {routes()}
         </div>
       </ThemeProvider>
     )
+  }
+}
+
+const styles = {
+  appBar: {
+    position: 'fixed'
   }
 }
 

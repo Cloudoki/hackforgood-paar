@@ -10,13 +10,23 @@
     "message": ""
   },
   {
-    "id": "app.drawer.profile",
+    "id": "app.drawer.addprofile",
     "defaultMessage": "Add Profile",
     "message": ""
   },
   {
     "id": "addProfile.paper.title",
     "defaultMessage": "Add Profile",
+    "message": ""
+  },
+  {
+    "id": "app.drawer.profile",
+    "defaultMessage": "Profile",
+    "message": ""
+  },
+  {
+    "id": "app.drawer.chat",
+    "defaultMessage": "Chat",
     "message": ""
   },
   {
@@ -62,6 +72,46 @@
   {
     "id": "addProfile.textfield.languages",
     "defaultMessage": "Languages",
+   "message": ""
+  },
+  {
+    "id": "profile.assign",
+    "defaultMessage": "Assing mentor",
+    "message": ""
+  },
+  {
+    "id": "profile.make",
+    "defaultMessage": "Make mentor",
+    "message": ""
+  },
+  {
+    "id": "chat.title",
+    "defaultMessage": "Chat",
+    "message": ""
+  },
+  {
+    "id": "chat.userlist",
+    "defaultMessage": "Users Connected",
+    "message": ""
+  },
+  {
+    "id": "chat.user",
+    "defaultMessage": "Me",
+    "message": ""
+  },
+  {
+    "id": "chat.messages",
+    "defaultMessage": "Messages:",
+    "message": ""
+  },
+  {
+    "id": "chat.message",
+    "defaultMessage": "Type message here",
+    "message": ""
+  },
+  {
+    "id": "chat.send",
+    "defaultMessage": "Send",
     "message": ""
   }
 ]

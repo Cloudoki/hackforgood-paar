@@ -13,7 +13,9 @@ const styles = {
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 20,
+    paddingTop: 84
   }
 }
 
