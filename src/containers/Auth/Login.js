@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { login } from './actions'
+import { TextField, RaisedButton } from 'material-ui';
+import FontIcon from 'material-ui/FontIcon';
+
 
 class Login extends Component {
   state = {
@@ -20,6 +23,8 @@ class Login extends Component {
   }
 
   _onButtonClick = () => {
+
+    console.log("login clicked!!");
     const { email, password } = this.state
 
     if (email.length && password.length) {
@@ -32,28 +37,33 @@ class Login extends Component {
     return (
       <div style={styles.container}>
         <div>
-          <h3>LOGIN</h3>
+          <h1 style={styles.header}>PAAR Login</h1>
           <div>
-            <span>Email </span>
-            <input
-              type='text'
-              name='email'
+            <TextField
+              hintText=""
+              floatingLabelText="Email"
               value={email}
               onChange={this._handleEmailChange}
-            />
-          </div>
-          <div>
-            <span>Password </span>
-            <input
-              type='password'
-              name='password'
+            /><br />
+
+            <TextField
+              hintText=""
+              floatingLabelText="Password"
+              type="password"
               value={password}
               onChange={this._handlePwdChange}
+            /><br />
+
+            <RaisedButton
+              onClick={this._onButtonClick}
+              target="_blank"
+              label="Login"
+              primary={true}
+              style={styles.button}
+              icon={<FontIcon className="muidocs-icon-custom-github" />}
             />
+
           </div>
-          <button
-            onClick={this._onButtonClick}
-          >Log me in</button>
         </div>
       </div>
     )
@@ -70,6 +80,18 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  button: {
+    marginTop: 25,
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  header: {
+    marginTop: 100,
+    flex: 1,
+    justifyContent: 'center',
+    display: 'flex'
   }
 }
 
