@@ -21,7 +21,6 @@ class HomePage extends Component {
 
   render () {
     const { people } = this.props
-    console.log(people)
     return (
       <div style={styles.root}>
         <GridList
