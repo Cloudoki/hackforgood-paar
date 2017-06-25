@@ -22,17 +22,23 @@ import {
 
 const dummyMentorUser = {
   name: "Mentor",
-  type: 'mentor'
+  type: 'mentor',
+  token: "asdasd",
+  role: 'user'
 }
 
 const dummyInstitutionUser = {
   name: "Institution",
-  type: 'institution'
+  type: 'institution',
+  token: "asdasd",
+  role: 'user'
 }
 
 const dummyRefugeeUser = {
   name: "Refugee",
-  type: 'refugee'
+  type: 'refugee',
+  token: "asdasd",
+  role: 'user'
 }
 
 const initialState = Immutable.from({

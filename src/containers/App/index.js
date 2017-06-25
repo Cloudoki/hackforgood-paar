@@ -15,7 +15,7 @@ class App extends Component {
     drawerOpen: false
   }
 
-  componentWillMount () {
+  componentWillMount () { 
     const { auth } = this.props
     if (auth.token != null) {
       this.props.userAuthLogin(auth.authToken)
@@ -54,12 +54,25 @@ class App extends Component {
             open={drawerOpen}
             onRequestChange={this._handleRequestChange}
           >
-            <MenuItem onTouchTap={createOnClick(this._navigate, '/')}>{messages['app.drawer.home']}</MenuItem>
-            <MenuItem onTouchTap={createOnClick(this._navigate, '/addprofile')}>{messages['app.drawer.addprofile']}</MenuItem>
-            <MenuItem onTouchTap={createOnClick(this._navigate, '/profile')}>{messages['app.drawer.profile']}</MenuItem>
-            <MenuItem onTouchTap={createOnClick(this._navigate, '/chat')}>{messages['app.drawer.chat']}</MenuItem>
-            <MenuItem onTouchTap={createOnClick(this._navigate, '/filter')}>{messages['app.drawer.filter']}</MenuItem>
+            {
+              this.props.auth.user.username == 'institution@test.com' ?
+              <MenuItem onTouchTap={createOnClick(this._navigate, '/')}>{messages['app.drawer.home']}</MenuItem>
+              : ''
+            }
+            {/*<MenuItem onTouchTap={createOnClick(this._navigate, '/addprofile')}>{messages['app.drawer.addprofile']}</MenuItem>*/}
+            {
+              this.props.auth.user.username != 'institution@test.com' ?
+              <MenuItem onTouchTap={createOnClick(this._navigate, '/chat')}>{messages['app.drawer.chat']}</MenuItem>
+              : ''
+            }
+            {
+              this.props.auth.user.username != 'institution@test.com' ?
+              <MenuItem onTouchTap={createOnClick(this._navigate, '/profile')}>{messages['app.drawer.profile']}</MenuItem>
+              : ''
+            }
+            {/*<MenuItem onTouchTap={createOnClick(this._navigate, '/filter')}>{messages['app.drawer.filter']}</MenuItem>*/}
             <MenuItem onTouchTap={createOnClick(this._navigate, '/info')}>{messages['app.drawer.info']}</MenuItem>
+            <MenuItem onTouchTap={createOnClick(this._navigate, '/login')}>Logout</MenuItem>
           </Drawer>
           {routes()}
         </div>

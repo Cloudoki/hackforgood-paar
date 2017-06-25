@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import io from 'socket.io-client'
 import {List, Subheader, ListItem, TextField, RaisedButton} from 'material-ui'
 import {darkBlack} from 'material-ui/styles/colors'
-const socket = io('http://172.17.80.66:4001')
+let socket
 
 class ChatPage extends Component {
   state = {
@@ -14,12 +14,17 @@ class ChatPage extends Component {
 
   componentWillMount () {
     const { intl } = this.context
+    socket = io('http://172.17.80.66:4001')
     socket.on('joined', (payload) => this.addUserToList(payload))
     socket.on('left', (payload) => this.removeUserFromList(payload))
     socket.on('newMessage', (payload) => this.addMessage(payload))
     socket.on('users', (payload) => this.addUserList(payload))
     socket.emit('join', {'username': localStorage.getItem('username') || `Guest_${Math.random().toString(36).substring(7)}`})
     this.addUserToList({'username': intl.messages['chat.user']})
+  }
+
+  componentWillUnmount () {
+    socket.emit('leave', {})
   }
 
   addUserList (payload) {

@@ -22,11 +22,11 @@ const authMiddleware = (store) => (next) => (action) => {
       path: '/',
       maxAge: TOKEN_MAX_AGE
     })
+    
+    let navigateTo = action.data.username == 'institution@test.com'? '/': '/profile'
 
-    let navigateTo = action.data.email == 'institution@test.com'? '/': '/profile'
-
-    const nextPath = history.location.state && history.location.state.onSuccess ? history.location.state.onSuccess : navigateTo
-    history.replace(nextPath)
+    // const nextPath = history.location.state && history.location.state.onSuccess ? history.location.state.onSuccess : navigateTo
+    history.replace(navigateTo)
   } else if (action.type === AUTH_LOGIN_USER_ERROR) {
     cookie.remove(TOKEN_KEY)
   } else if (action.type === LOGOUT_USER) {
