@@ -15,7 +15,7 @@ export default () => (
   <Switch>
     <Route path='/' exact component={HomePage} />
     <Route path='/login' component={Login} />
-    <Route path='/filter' component={requireAuth(Filter, 'user')} />
+    <Route path='/filter' component={Filter} />
     <Route path='/addprofile' component={requireAuth(AddProfile, 'user')} />
     <Route path='/profile' component={requireAuth(Profile, 'user')} />
     <Route path='/chat' component={requireAuth(ChatPage, 'user')} />

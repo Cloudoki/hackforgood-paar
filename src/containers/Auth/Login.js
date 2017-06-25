@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { login } from './actions'
-import { TextField, RaisedButton } from 'material-ui';
-import FontIcon from 'material-ui/FontIcon';
-
+import { TextField, RaisedButton } from 'material-ui'
+import { localPut } from 'util/storage'
 
 class Login extends Component {
   state = {
@@ -23,8 +22,6 @@ class Login extends Component {
   }
 
   _onButtonClick = () => {
-
-    console.log("login clicked!!");
     const { username, password } = this.state
 
     if (username.length && password.length) {
@@ -32,7 +29,7 @@ class Login extends Component {
     }
 
     // add username to localstorage
-    localStorage.setItem('username', this.state.username)
+    localPut('username', this.state.username)
   }
 
   render () {
@@ -40,30 +37,28 @@ class Login extends Component {
     return (
       <div style={styles.container}>
         <div>
-          <h1 style={styles.header}>PAAR Login</h1>
+          <h1 style={styles.header}>Login</h1>
           <div>
             <TextField
-              hintText=""
-              floatingLabelText="Username"
+              floatingLabelText='Username'
               value={username}
               onChange={this._handleUsernameChange}
             /><br />
 
             <TextField
-              hintText=""
-              floatingLabelText="Password"
-              type="password"
+              floatingLabelText='Password'
+              type='password'
               value={password}
               onChange={this._handlePwdChange}
-            /><br />
+            />
+
+            <br />
 
             <RaisedButton
               onClick={this._onButtonClick}
-              target="_blank"
-              label="Login"
-              primary={true}
+              label='Login'
+              primary
               style={styles.button}
-              icon={<FontIcon className="muidocs-icon-custom-github" />}
             />
 
           </div>
@@ -85,10 +80,7 @@ const styles = {
     alignItems: 'center'
   },
   button: {
-    marginTop: 25,
-    flex: 1,
-    display: 'flex',
-    justifyContent: 'center'
+    marginTop: 25
   },
   header: {
     marginTop: 100,

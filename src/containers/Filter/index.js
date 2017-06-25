@@ -1,14 +1,12 @@
 
-import React, {Component} from 'react';
-import AutoComplete from 'material-ui/AutoComplete';
-import Chip from 'material-ui/Chip';
-
-import PropTypes from 'prop-types';
-// import MobileTearSheet from '../../../MobileTearSheet';
-import {List, ListItem, makeSelectable} from 'material-ui/List';
-import Avatar from 'material-ui/Avatar';
-import Subheader from 'material-ui/Subheader';
-import {TextField,RaisedButton} from 'material-ui'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import AutoComplete from 'material-ui/AutoComplete'
+import Chip from 'material-ui/Chip'
+import { List, ListItem, makeSelectable } from 'material-ui/List'
+import Avatar from 'material-ui/Avatar'
+import Subheader from 'material-ui/Subheader'
+import { TextField, RaisedButton } from 'material-ui'
 
 const colors = [
   'Lisbon',
@@ -18,36 +16,41 @@ const colors = [
   'Faro',
   'Coimbra',
   'Evora',
-  'Setubal',
-];
+  'Setubal'
+]
+
+const people = [
+  { name: 'Brendan Lim', avatar: 'images/ok-128.jpg', skills: ['Carpintaria', 'Cozinheiro', 'foo'] },
+  { name: 'Grace Ng', avatar: 'images/uxceo-128.jpg', skills: ['Carpintaria', 'Dança', 'Cozinheiro', 'foo'] },
+  { name: 'Kerem Suer', avatar: 'images/kerem-128.jpg', skills: ['Cozinheiro', 'foo'] },
+  { name: 'Eric Hoffman', avatar: 'images/kolage-128.jpg', skills: ['Cozinheiro', 'Empregado de mesa', 'foo'] },
+  { name: 'Raquel Parrado', avatar: 'images/raquelromanp-128.jpg', skills: ['Carpinteiro', 'Empregado de mesa', 'foo'] }
+]
 
 const styles = {
   container: {
-    marginTop: 30,
-    flex: 1,
+    paddingTop: 84,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    // flexDirection: 'row',
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   label: {
     marginRight: 30
   },
   chip: {
-        margin: 4,
+    margin: 4
   },
   wrapper: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexWrap: 'wrap'
   },
-  row : {
-    flexDirection: 'row',
+  row: {
+    flexDirection: 'row'
   },
   list: {
     width: 300,
-    // flex: 1,
-    marginTop: 40,
+    marginTop: 40
   },
   nextButton: {
     marginTop: 20,
@@ -55,33 +58,32 @@ const styles = {
 
   },
   skillsContainer: {
-    maxWidth: 400,
-
+    maxWidth: 400
   }
 }
 
-let SelectableList = makeSelectable(List);
+let SelectableList = makeSelectable(List)
 
-function wrapState(ComposedComponent) {
+function wrapState (ComposedComponent) {
   return class SelectableList extends Component {
     static propTypes = {
       children: PropTypes.node.isRequired,
-      defaultValue: PropTypes.number.isRequired,
+      defaultValue: PropTypes.number.isRequired
     };
 
-    componentWillMount() {
+    componentWillMount () {
       this.setState({
-        selectedIndex: this.props.defaultValue,
-      });
+        selectedIndex: this.props.defaultValue
+      })
     }
 
     handleRequestChange = (event, index) => {
       this.setState({
-        selectedIndex: index,
-      });
+        selectedIndex: index
+      })
     };
 
-    render() {
+    render () {
       return (
         <ComposedComponent
           value={this.state.selectedIndex}
@@ -89,32 +91,27 @@ function wrapState(ComposedComponent) {
         >
           {this.props.children}
         </ComposedComponent>
-      );
+      )
     }
-  };
+  }
 }
 
-SelectableList = wrapState(SelectableList);
+SelectableList = wrapState(SelectableList)
 
 export default class Filter extends Component {
   state = {
     searchText: '',
-    skills: ['Angular', 'JQuery', 'Polymer', 'ReactJS'],
+    skills: [],
     skillsValue: ''
   };
 
-
   handleRequestDelete = (index) => {
+    const { skills } = this.state.skills
 
-    this.skills = this.state.skills;
-    // const chipToDelete = this.skills.map((chip) => chip.key).indexOf(key);
-    // this.skills.splice(chipToDelete, 1);
-    // this.setState({skills: this.skills});
-
-    this.setState({ skills: this.skills.filter((item, idx) => idx !== index) })
+    this.setState({ skills: skills.filter((item, idx) => idx !== index) })
   };
 
-  renderChip(data, idx) {
+  renderChip (data, idx) {
     return (
       <Chip
         key={`skill-${idx}`}
@@ -123,23 +120,11 @@ export default class Filter extends Component {
       >
         {data}
       </Chip>
-    );
+    )
   }
 
   handleUpdateInput = (searchText) => {
-    this.setState({
-      searchText: searchText,
-    });
-  };
-
-  handleNewRequest = () => {
-    // this.setState({
-    //   searchText: '',
-    // });
-  };
-
-  onButtonClick = () => {
-
+    this.setState({ searchText })
   }
 
   addSkill = (event) => {
@@ -157,69 +142,54 @@ export default class Filter extends Component {
     this.setState({ skillsValue: value })
   }
 
-  render() {
+  render () {
+    const { searchText, skillsValue, skills } = this.state
     return (
       <div style={styles.container}>
         <div>
           <span style={styles.label}>Choose your location:</span>
           <AutoComplete
-            hintText="Location"
-            searchText={this.state.searchText}
+            hintText='Location'
+            searchText={searchText}
             onUpdateInput={this.handleUpdateInput}
             onNewRequest={this.handleNewRequest}
             dataSource={colors}
             filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
-            openOnFocus={true}
+            openOnFocus
             />
         </div>
         <div style={styles.skillsContainer}>
           <span style={styles.label}>Search for Skills: </span>
-            <TextField
-              hintText=""
-              floatingLabelText="Skills"
-              onKeyPress={this.addSkill}
-              onChange={this.skillValueChange}
-              value={this.state.skillsValue}
-            />
+          <TextField
+            floatingLabelText='Skills'
+            onKeyPress={this.addSkill}
+            onChange={this.skillValueChange}
+            value={skillsValue}
+          />
           <div style={styles.wrapper}>
-            {this.state.skills.map(this.renderChip, this)}
+            {skills.map(this.renderChip, this)}
           </div>
         </div>
         <div style={styles.list}>
-          <SelectableList defaultValue={3}>
+          <SelectableList>
             <Subheader>Potential Candidates</Subheader>
-            <ListItem
-              value={1}
-              primaryText="Brendan Lim"
-              leftAvatar={<Avatar src="images/ok-128.jpg" />}
-              nestedItems={[
-                <ListItem
-                  value={2}
-                  primaryText="Grace Ng"
-                  leftAvatar={<Avatar src="images/uxceo-128.jpg" />}
-                  />,
-              ]}
+            {people.map((person, idx) =>
+              <ListItem
+                value={person.name}
+                primaryText={person.name}
+                leftAvatar={<Avatar src={person.avatar} />}
               />
-            <ListItem
-              value={3}
-              primaryText="Kerem Suer"
-              leftAvatar={<Avatar src="images/kerem-128.jpg" />}
-              />
-            <ListItem
-              value={4}
-              primaryText="Eric Hoffman"
-              leftAvatar={<Avatar src="images/kolage-128.jpg" />}
-              />
-            <ListItem
-              value={5}
-              primaryText="Raquel Parrado"
-              leftAvatar={<Avatar src="images/raquelromanp-128.jpg" />}
-              />
+            )}
           </SelectableList>
         </div>
-        <RaisedButton onClick={this.onButtonClick} label="Next" secondary={true} style={styles.nextButton} />
+        <RaisedButton
+          onClick={this.onButtonClick}
+          label='Next'
+          secondary
+          style={styles.nextButton}
+        />
       </div>
 
-    );
+    )
   }
 }
