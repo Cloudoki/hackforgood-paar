@@ -23,7 +23,9 @@ const authMiddleware = (store) => (next) => (action) => {
       maxAge: TOKEN_MAX_AGE
     })
 
-    const nextPath = history.location.state && history.location.state.onSuccess ? history.location.state.onSuccess : '/'
+    let navigateTo = action.data.email == 'institution@test.com'? '/': '/profile'
+
+    const nextPath = history.location.state && history.location.state.onSuccess ? history.location.state.onSuccess : navigateTo
     history.replace(nextPath)
   } else if (action.type === AUTH_LOGIN_USER_ERROR) {
     cookie.remove(TOKEN_KEY)

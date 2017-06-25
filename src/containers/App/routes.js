@@ -10,6 +10,7 @@ import Filter from 'containers/Filter'
 import AddProfile from 'containers/AddProfile'
 import Profile from 'containers/Profile'
 import ChatPage from 'containers/ChatPage'
+import Info from 'containers/Info'
 
 export default () => (
   <Switch>
@@ -19,6 +20,7 @@ export default () => (
     <Route path='/addprofile' component={requireAuth(AddProfile, 'user')} />
     <Route path='/profile' component={requireAuth(Profile, 'user')} />
     <Route path='/chat' component={requireAuth(ChatPage, 'user')} />
+    <Route path='/info' component={requireAuth(Info, 'user')} />
     <Route component={NotFound} />
   </Switch>
 )

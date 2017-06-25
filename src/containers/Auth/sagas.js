@@ -45,15 +45,17 @@ function * loginSaga (action) {
    * this will allways login
    *
    */
-  const requestUrl = `${DUMMY_API}/users/0`
+  // const requestUrl = `${DUMMY_API}/users/0`
 
-  const response = yield call(request, requestUrl)
+  // const response = yield call(request, requestUrl)
 
-  if (!response.err) {
-    yield put(success(response.data))
-  } else {
-    yield put(error(response.err))
-  }
+  // if (!response.err) {
+  //   yield put(success(response.data))
+  // } else {
+  //   yield put(error(response.err))
+  // }
+  console.log(action)
+  yield put(success(action.credentials))
 }
 
 function * login () {
