@@ -20,15 +20,47 @@ import {
   LOGOUT_USER
 } from './constants'
 
+const dummyMentorUser = {
+  name: "Mentor",
+  type: 'mentor'
+}
+
+const dummyInstitutionUser = {
+  name: "Institution",
+  type: 'institution'
+}
+
+const dummyRefugeeUser = {
+  name: "Refugee",
+  type: 'refugee'
+}
+
 const initialState = Immutable.from({
   authToken: cookie.load(TOKEN_KEY) || null,
   user: {},
-  isAuthorizing: false
+  isAuthorizing: false,
+  isAuthorized: false
 })
 
 function appReducer (state = initialState, action) {
   switch (action.type) {
-    case LOGIN_USER:
+    case LOGIN_USER: {
+      let theUser
+      switch (action.credentials.email) {
+        case 'mentor@test.com':
+          theUser = dummyMentorUser
+          break
+        case 'institution@test.com':
+          theUser = dummyInstitutionUser
+          break
+        case 'refugee@test.com':
+          theUser = dummyRefugeeUser
+          break
+      }
+
+      return state
+        .set('user', theUser)
+    }
     case SIGNUP_USER:
     case AUTH_LOGIN_USER:
       return state

@@ -10,9 +10,11 @@ import { routerReducer as routing } from 'react-router-redux'
 import locale from 'containers/LanguageProvider/reducer'
 
 import auth from 'containers/Auth/reducer'
+import refugees from 'containers/HomePage/reducer'
 
 export default combineReducers({
   routing,
   auth,
+  refugees,
   locale
 })

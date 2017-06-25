@@ -1,12 +1,34 @@
 
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import ThemeProvider from 'components/ThemeProvider'
+import { AppBar, Drawer, MenuItem } from 'material-ui'
 
-const HomePage = (props, { intl: { messages } }) => (
-  <div style={styles.container}>
-    <h1>{messages['test.working']}</h1>
-  </div>
-)
+const createOnClick = (fn, value) => event => fn(value)
+
+class HomePage extends Component {
+
+  _navigate = (path) => {
+    const { history } = this.props
+    history.push(path)
+  }
+
+  render() {
+    return (
+      <div style={styles.container}>
+        {this.props.refugees.refugees.map(refugee => {
+          return <li
+            key={refugee.id}
+            onClick={createOnClick(this._navigate, '/refugee/'+refugee.id)}
+            >
+              {refugee.name}
+            </li>
+        })}
+      </div>
+    )
+  }
+}
 
 const styles = {
   container: {
@@ -17,8 +39,6 @@ const styles = {
   }
 }
 
-HomePage.contextTypes = {
-  intl: PropTypes.object.isRequired
-}
+const mapStateToProps = ({ refugees }) => ({ refugees })
 
-export default HomePage
+export default connect(mapStateToProps)(HomePage)
