@@ -162,7 +162,7 @@ class AddProfile extends Component {
 
 const styles = {
   container: {
-    padding: 20
+    padding: 84
   },
   title: {
     position: 'absolute',

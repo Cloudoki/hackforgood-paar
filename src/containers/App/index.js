@@ -46,6 +46,7 @@ class App extends Component {
           <AppBar
             title='PAAR'
             onLeftIconButtonTouchTap={this._toggleDrawer}
+            style={styles.appBar}
           />
           <Drawer
             docked={false}
@@ -60,6 +61,12 @@ class App extends Component {
         </div>
       </ThemeProvider>
     )
+  }
+}
+
+const styles = {
+  appBar: {
+    position: 'fixed'
   }
 }
 
