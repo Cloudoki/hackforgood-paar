@@ -7,13 +7,13 @@ import { localPut } from 'util/storage'
 
 class Login extends Component {
   state = {
-    username: '',
+    email: '',
     password: ''
   }
 
-  _handleUsernameChange = ({ target }) => {
+  _handleEmailChange = ({ target }) => {
     const { value } = target
-    this.setState({ username: value })
+    this.setState({ email: value })
   }
 
   _handlePwdChange = ({ target }) => {
@@ -22,27 +22,27 @@ class Login extends Component {
   }
 
   _onButtonClick = () => {
-    const { username, password } = this.state
+    const { email, password } = this.state
 
-    if (username.length && password.length) {
-      this.props.logUserIn({ username, password })
+    if (email.length && password.length) {
+      this.props.logUserIn({ email, password })
     }
 
     // add username to localstorage
-    localPut('username', this.state.username)
+    localPut('username', this.state.email)
   }
 
   render () {
-    const { username, password } = this.state
+    const { email, password } = this.state
     return (
       <div style={styles.container}>
         <div>
           <h1 style={styles.header}>Login</h1>
           <div>
             <TextField
-              floatingLabelText='Username'
-              value={username}
-              onChange={this._handleUsernameChange}
+              floatingLabelText='Email'
+              value={email}
+              onChange={this._handleEmailChange}
             /><br />
 
             <TextField
