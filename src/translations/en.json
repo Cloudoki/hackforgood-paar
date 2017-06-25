@@ -25,6 +25,11 @@
     "message": ""
   },
   {
+    "id": "app.drawer.chat",
+    "defaultMessage": "Chat",
+    "message": ""
+  },
+  {
     "id": "addProfile.textfield.name",
     "defaultMessage": "Name",
     "message": ""

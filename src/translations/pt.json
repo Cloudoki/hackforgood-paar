@@ -20,6 +20,11 @@
     "message": ""
   },
   {
+    "id": "app.drawer.chat",
+    "defaultMessage": "Chat",
+    "message": ""
+  },
+  {
     "id": "addProfile.paper.title",
     "defaultMessage": "Add Profile",
     "message": "Adicionar Perfil"

@@ -116,7 +116,8 @@ const styles = {
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16
+    padding: 16,
+    paddingTop: 84
   },
   row: {
     width: '100%',
