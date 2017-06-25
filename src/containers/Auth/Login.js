@@ -8,13 +8,13 @@ import FontIcon from 'material-ui/FontIcon';
 
 class Login extends Component {
   state = {
-    email: '',
+    username: '',
     password: ''
   }
 
-  _handleEmailChange = ({ target }) => {
+  _handleUsernameChange = ({ target }) => {
     const { value } = target
-    this.setState({ email: value })
+    this.setState({ username: value })
   }
 
   _handlePwdChange = ({ target }) => {
@@ -25,15 +25,18 @@ class Login extends Component {
   _onButtonClick = () => {
 
     console.log("login clicked!!");
-    const { email, password } = this.state
+    const { username, password } = this.state
 
-    if (email.length && password.length) {
-      this.props.logUserIn({ email, password })
+    if (username.length && password.length) {
+      this.props.logUserIn({ username, password })
     }
+
+    // add username to localstorage
+    localStorage.setItem('username', this.state.username)
   }
 
   render () {
-    const { email, password } = this.state
+    const { username, password } = this.state
     return (
       <div style={styles.container}>
         <div>
@@ -41,9 +44,9 @@ class Login extends Component {
           <div>
             <TextField
               hintText=""
-              floatingLabelText="Email"
-              value={email}
-              onChange={this._handleEmailChange}
+              floatingLabelText="Username"
+              value={username}
+              onChange={this._handleUsernameChange}
             /><br />
 
             <TextField

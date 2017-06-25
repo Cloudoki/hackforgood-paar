@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import {List, ListItem, makeSelectable} from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import Subheader from 'material-ui/Subheader';
-import RaisedButton from 'material-ui/RaisedButton'
+import {TextField,RaisedButton} from 'material-ui'
 
 const colors = [
   'Lisbon',
@@ -51,6 +51,11 @@ const styles = {
   },
   nextButton: {
     marginTop: 20,
+    marginBottom: 50
+
+  },
+  skillsContainer: {
+    maxWidth: 400,
 
   }
 }
@@ -94,35 +99,29 @@ SelectableList = wrapState(SelectableList);
 export default class Filter extends Component {
   state = {
     searchText: '',
-    chipData: [
-      {key: 0, label: 'Angular'},
-      {key: 1, label: 'JQuery'},
-      {key: 2, label: 'Polymer'},
-      {key: 3, label: 'ReactJS'},
-    ]
+    skills: ['Angular', 'JQuery', 'Polymer', 'ReactJS'],
+    skillsValue: ''
   };
 
 
-  handleRequestDelete = (key) => {
-    if (key === 3) {
-      alert('Why would you want to delete React?! :)');
-      return;
-    }
+  handleRequestDelete = (index) => {
 
-    this.chipData = this.state.chipData;
-    const chipToDelete = this.chipData.map((chip) => chip.key).indexOf(key);
-    this.chipData.splice(chipToDelete, 1);
-    this.setState({chipData: this.chipData});
+    this.skills = this.state.skills;
+    // const chipToDelete = this.skills.map((chip) => chip.key).indexOf(key);
+    // this.skills.splice(chipToDelete, 1);
+    // this.setState({skills: this.skills});
+
+    this.setState({ skills: this.skills.filter((item, idx) => idx !== index) })
   };
 
-  renderChip(data) {
+  renderChip(data, idx) {
     return (
       <Chip
-        key={data.key}
-        onRequestDelete={() => this.handleRequestDelete(data.key)}
+        key={`skill-${idx}`}
+        onRequestDelete={() => this.handleRequestDelete(idx)}
         style={styles.chip}
       >
-        {data.label}
+        {data}
       </Chip>
     );
   }
@@ -143,10 +142,25 @@ export default class Filter extends Component {
 
   }
 
+  addSkill = (event) => {
+    if (event.charCode === 13) {
+      const { value } = event.target
+      if (value.length) {
+        const { skills } = this.state
+        this.setState({ skills: [...skills, value], skillsValue: '' })
+      }
+    }
+  }
+
+  skillValueChange = (event) => {
+    const { value } = event.target
+    this.setState({ skillsValue: value })
+  }
+
   render() {
     return (
       <div style={styles.container}>
-        <div style={styles.row}>
+        <div>
           <span style={styles.label}>Choose your location:</span>
           <AutoComplete
             hintText="Location"
@@ -158,11 +172,17 @@ export default class Filter extends Component {
             openOnFocus={true}
             />
         </div>
-        <br />
-        <div style={styles.row}>
-          <span style={styles.label}>Skills</span>
+        <div style={styles.skillsContainer}>
+          <span style={styles.label}>Search for Skills: </span>
+            <TextField
+              hintText=""
+              floatingLabelText="Skills"
+              onKeyPress={this.addSkill}
+              onChange={this.skillValueChange}
+              value={this.state.skillsValue}
+            />
           <div style={styles.wrapper}>
-            {this.state.chipData.map(this.renderChip, this)}
+            {this.state.skills.map(this.renderChip, this)}
           </div>
         </div>
         <div style={styles.list}>
