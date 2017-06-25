@@ -10,13 +10,18 @@
     "message": ""
   },
   {
-    "id": "app.drawer.profile",
+    "id": "app.drawer.addprofile",
     "defaultMessage": "Add Profile",
     "message": ""
   },
   {
     "id": "addProfile.paper.title",
     "defaultMessage": "Add Profile",
+    "message": ""
+  },
+  {
+    "id": "app.drawer.profile",
+    "defaultMessage": "Profile",
     "message": ""
   },
   {
@@ -62,6 +67,16 @@
   {
     "id": "addProfile.textfield.languages",
     "defaultMessage": "Languages",
+    "message": ""
+  },
+  {
+    "id": "profile.assign",
+    "defaultMessage": "Assing mentor",
+    "message": ""
+  },
+  {
+    "id": "profile.make",
+    "defaultMessage": "Make mentor",
     "message": ""
   }
 ]
