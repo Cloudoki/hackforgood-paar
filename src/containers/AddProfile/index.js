@@ -11,6 +11,7 @@ const countries = [
 ]
 
 const createDelete = (fn, idx) => event => fn(idx)
+const createNavigation = (fn, path, id) => event => fn(path, { id })
 
 class AddProfile extends Component {
   state = {
@@ -69,6 +70,7 @@ class AddProfile extends Component {
     const { intl } = this.context
     const messages = intl.messages
     const { skills, languages, skillsValue, languageValue, selectedCountry } = this.state
+    const { history } = this.props
     return (
       <div style={styles.container}>
         <Paper
@@ -152,6 +154,7 @@ class AddProfile extends Component {
               label='add'
               backgroundColor={lightGreen500}
               labelColor={white}
+              onClick={createNavigation(history.push, '/refugees/1', 1)}
             />
           </div>
         </Paper>
@@ -200,6 +203,10 @@ const styles = {
     marginRight: 10,
     marginTop: 10
   }
+}
+
+AddProfile.propTypes = {
+  history: PropTypes.object.isRequired
 }
 
 AddProfile.contextTypes = {

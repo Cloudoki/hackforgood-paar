@@ -15,7 +15,7 @@ class App extends Component {
     drawerOpen: false
   }
 
-  componentWillMount () { 
+  componentWillMount () {
     const { auth } = this.props
     if (auth.token != null) {
       this.props.userAuthLogin(auth.authToken)
@@ -55,20 +55,24 @@ class App extends Component {
             onRequestChange={this._handleRequestChange}
           >
             {
-              this.props.auth.user.username == 'institution@test.com' ?
-              <MenuItem onTouchTap={createOnClick(this._navigate, '/')}>{messages['app.drawer.home']}</MenuItem>
-              : ''
-            }
-            {/*<MenuItem onTouchTap={createOnClick(this._navigate, '/addprofile')}>{messages['app.drawer.addprofile']}</MenuItem>*/}
-            {
-              this.props.auth.user.username != 'institution@test.com' ?
-              <MenuItem onTouchTap={createOnClick(this._navigate, '/chat')}>{messages['app.drawer.chat']}</MenuItem>
-              : ''
+              this.props.auth.user.email == 'institution@test.com'
+              ? <MenuItem onTouchTap={createOnClick(this._navigate, '/')}>{messages['app.drawer.home']}</MenuItem>
+              : null
             }
             {
-              this.props.auth.user.username != 'institution@test.com' ?
-              <MenuItem onTouchTap={createOnClick(this._navigate, '/profile')}>{messages['app.drawer.profile']}</MenuItem>
-              : ''
+              this.props.auth.user.email == 'institution@test.com'
+              ? <MenuItem onTouchTap={createOnClick(this._navigate, '/addprofile')}>{messages['app.drawer.addprofile']}</MenuItem>
+              : null
+            }
+            {
+              this.props.auth.user.email != 'institution@test.com'
+              ? <MenuItem onTouchTap={createOnClick(this._navigate, '/chat')}>{messages['app.drawer.chat']}</MenuItem>
+              : null
+            }
+            {
+              this.props.auth.user.email != 'institution@test.com'
+              ? <MenuItem onTouchTap={createOnClick(this._navigate, '/profile')}>{messages['app.drawer.profile']}</MenuItem>
+              : null
             }
             {/*<MenuItem onTouchTap={createOnClick(this._navigate, '/filter')}>{messages['app.drawer.filter']}</MenuItem>*/}
             <MenuItem onTouchTap={createOnClick(this._navigate, '/info')}>{messages['app.drawer.info']}</MenuItem>

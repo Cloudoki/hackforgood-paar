@@ -11,6 +11,7 @@ import AddProfile from 'containers/AddProfile'
 import Profile from 'containers/Profile'
 import ChatPage from 'containers/ChatPage'
 import Info from 'containers/Info'
+import Refugees from 'containers/Profile/Refugees'
 
 export default () => (
   <Switch>
@@ -21,6 +22,7 @@ export default () => (
     <Route path='/profile' component={Profile} />
     <Route path='/chat' component={ChatPage} />
     <Route path='/info' component={Info} />
+    <Route path='/refugees/:id' component={Refugees} />
     <Route component={NotFound} />
   </Switch>
 )

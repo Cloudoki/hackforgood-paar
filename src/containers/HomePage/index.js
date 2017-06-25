@@ -1,46 +1,63 @@
 
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import ThemeProvider from 'components/ThemeProvider'
-import { AppBar, Drawer, MenuItem } from 'material-ui'
+import { GridList, GridTile, IconButton, Subheader } from 'material-ui'
+import Eye from 'material-ui/svg-icons/image/remove-red-eye'
 
-const createOnClick = (fn, value) => event => fn(value)
+const createOnClick = (fn, path, id) => event => fn(path, id)
 
 class HomePage extends Component {
+  componentWillMount () {
+    const { auth: { user }, history } = this.props
 
-  _navigate = (path) => {
+    if (user.email !== 'institution@test.com') {
+      history.replace('/login')
+    }
+  }
+  _navigate = (path, id) => {
     const { history } = this.props
-    history.push(path)
+    history.push(path, { id })
   }
 
-  render() {
+  render () {
+    const { people } = this.props
+    console.log(people)
     return (
-      <div style={styles.container}>
-        {this.props.refugees.refugees.map(refugee => {
-          return <li
-            key={refugee.id}
-            onClick={createOnClick(this._navigate, '/refugee/'+refugee.id)}
+      <div style={styles.root}>
+        <GridList
+          cellHeight={180}
+          style={styles.gridList}
+        >
+          <Subheader>December</Subheader>
+          {people.people.map((pep, idx) => (
+            <GridTile
+              key={idx}
+              title={pep.name}
+              subtitle={<span>by <b>{pep.country}</b></span>}
+              actionIcon={<IconButton onClick={createOnClick(this._navigate, `/refugees/${pep.id}`, pep.id)}><Eye color='white' /></IconButton>}
             >
-              {refugee.name}
-            </li>
-        })}
+              <img src={pep.avatar} />
+            </GridTile>
+          ))}
+        </GridList>
       </div>
     )
   }
 }
 
 const styles = {
-  container: {
-    flex: 1,
+  root: {
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
     padding: 20,
     paddingTop: 84
+  },
+  gridList: {
+    width: 500
   }
 }
 
-const mapStateToProps = ({ refugees }) => ({ refugees })
+const mapStateToProps = ({ auth, people }) => ({ auth, people })
 
 export default connect(mapStateToProps)(HomePage)

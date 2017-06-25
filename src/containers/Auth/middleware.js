@@ -22,8 +22,8 @@ const authMiddleware = (store) => (next) => (action) => {
       path: '/',
       maxAge: TOKEN_MAX_AGE
     })
-    
-    let navigateTo = action.data.username == 'institution@test.com'? '/': '/profile'
+
+    const navigateTo = action.data.email === 'institution@test.com' ? '/' : '/profile'
 
     // const nextPath = history.location.state && history.location.state.onSuccess ? history.location.state.onSuccess : navigateTo
     history.replace(navigateTo)
