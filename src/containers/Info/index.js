@@ -1,13 +1,8 @@
 
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import ThemeProvider from 'components/ThemeProvider'
-import { AppBar, Drawer, MenuItem } from 'material-ui'
 
 class Info extends Component {
-
-  render() {
+  render () {
     return (
       <div style={styles.container}>
         The info page
@@ -21,8 +16,9 @@ const styles = {
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingTop: 84
   }
 }
 
-export default connect(null)(Info)
+export default Info

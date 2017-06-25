@@ -20,7 +20,7 @@ export default () => (
     <Route path='/addprofile' component={requireAuth(AddProfile, 'user')} />
     <Route path='/profile' component={requireAuth(Profile, 'user')} />
     <Route path='/chat' component={requireAuth(ChatPage, 'user')} />
-    <Route path='/info' component={requireAuth(Info, 'user')} />
+    <Route path='/info' component={Info} />
     <Route component={NotFound} />
   </Switch>
 )

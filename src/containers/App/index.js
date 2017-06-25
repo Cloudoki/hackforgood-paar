@@ -58,6 +58,8 @@ class App extends Component {
             <MenuItem onTouchTap={createOnClick(this._navigate, '/addprofile')}>{messages['app.drawer.addprofile']}</MenuItem>
             <MenuItem onTouchTap={createOnClick(this._navigate, '/profile')}>{messages['app.drawer.profile']}</MenuItem>
             <MenuItem onTouchTap={createOnClick(this._navigate, '/chat')}>{messages['app.drawer.chat']}</MenuItem>
+            <MenuItem onTouchTap={createOnClick(this._navigate, '/filter')}>{messages['app.drawer.filter']}</MenuItem>
+            <MenuItem onTouchTap={createOnClick(this._navigate, '/info')}>{messages['app.drawer.info']}</MenuItem>
           </Drawer>
           {routes()}
         </div>

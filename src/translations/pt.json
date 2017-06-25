@@ -25,6 +25,16 @@
     "message": ""
   },
   {
+    "id": "app.drawer.filter",
+    "defaultMessage": "Filter",
+    "message": "Filtro"
+  },
+  {
+    "id": "app.drawer.info",
+    "defaultMessage": "Info",
+    "message": ""
+  },
+  {
     "id": "addProfile.paper.title",
     "defaultMessage": "Add Profile",
     "message": "Adicionar Perfil"

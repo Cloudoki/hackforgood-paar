@@ -30,6 +30,16 @@
     "message": ""
   },
   {
+    "id": "app.drawer.filter",
+    "defaultMessage": "Filter",
+    "message": ""
+  },
+  {
+    "id": "app.drawer.info",
+    "defaultMessage": "Info",
+    "message": ""
+  },
+  {
     "id": "addProfile.textfield.name",
     "defaultMessage": "Name",
     "message": ""
